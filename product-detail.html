@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - U Mobile Tech</title>
+    <meta name="description" content="View details of CCTV systems, mobile repairs, and accessories at U Mobile Tech.">
+    <meta name="keywords" content="CCTV, mobile repair, product detail, U Mobile Tech">
+    <meta property="og:title" content="Product Detail - U Mobile Tech">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630">
+
+    <style>
+        :root {
+            --primary-color: #9f33ff;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+            --secondary-color: #25d366;
+            --accent-color: #ffcc00;
+            --discount-color: #ff3333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+        }
+
+        .product-detail-section {
+            padding: 50px 5%;
+            background: var(--white);
+        }
+
+        .product-detail-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .product-detail-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-detail-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-detail-info {
+            flex: 1;
+            min-width: 300px;
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-detail-info:hover {
+            box-shadow: 0 10px 25px rgba(159, 51, 255, 0.2);
+        }
+
+        .product-detail-info h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .discount {
+            background-color: var(--discount-color);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .original-price {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discounted-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .warranty-info {
+            margin-bottom: 20px;
+        }
+
+        .warranty-info p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .warranty-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .warranty-info li {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .warranty-info li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quantity-btn {
+            background-color: var(--light-gray);
+            border: none;
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background-color: #ddd;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .add-to-cart, .buy-now-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--white);
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, var(--primary-color), #8a25e0);
+        }
+
+        .buy-now-btn {
+            background-color: #000;
+        }
+
+        .add-to-cart:hover, .buy-now-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #8a25e0, var(--primary-color));
+        }
+
+        .buy-now-btn:hover {
+            background-color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-container {
+                flex-direction: column;
+            }
+            .product-detail-info {
+                position: static;
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <section class="product-detail-section">
+        <div class="product-detail-container">
+            <div class="product-detail-image">
+                <img id="detail-image" src="" alt="Product Image">
+            </div>
+            <div class="product-detail-info">
+                <h2 id="detail-name"></h2>
+                <div class="discount" id="detail-discount"></div>
+                <div class="price-container">
+                    <span class="original-price" id="detail-original-price"></span>
+                    <span class="discounted-price" id="detail-discounted-price"></span>
+                </div>
+                <div class="warranty-info">
+                    <p>3 Month Warranty</p>
+                    <ul>
+                        <li>Island Wide Delivery</li>
+                        <li>Credit/Debit Card</li>
+                        <li>Cash On Delivery</li>
+                    </ul>
+                </div>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
+                    <input type="text" class="quantity-input" id="quantity" value="1" readonly>
+                    <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                    <button class="buy-now-btn" onclick="buyNow()">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const products = [
+            { id: 1, name: "HD CCTV Camera", price: 14999, image: "https://via.placeholder.com/300", description: "High-definition security camera with night vision", originalPrice: 16999, discount: "12%" },
+            { id: 2, name: "Wireless CCTV System", price: 39999, image: "https://via.placeholder.com/300", description: "Complete wireless security system with 4 cameras", originalPrice: 44999, discount: "11%" },
+            { id: 3, name: "iPhone Screen Replacement", price: 7999, image: "https://via.placeholder.com/300", description: "Original quality screen replacement for iPhone models", originalPrice: 8999, discount: "11%" },
+            { id: 4, name: "Samsung Battery", price: 2999, image: "https://via.placeholder.com/300", description: "High-capacity replacement battery for Samsung phones", originalPrice: 3499, discount: "14%" },
+            { id: 5, name: "CCTV DVR", price: 19999, image: "https://via.placeholder.com/300", description: "Digital video recorder for CCTV systems", originalPrice: 22999, discount: "13%" },
+            { id: 6, name: "Outdoor IP Camera", price: 24999, image: "https://via.placeholder.com/300", description: "Weatherproof IP camera with remote access", originalPrice: 27999, discount: "11%" },
+            { id: 7, name: "Phone Charger Cable", price: 1499, image: "https://via.placeholder.com/300", description: "Durable USB-C charging cable", originalPrice: 1799, discount: "17%" },
+            { id: 8, name: "Smart Doorbell Camera", price: 17999, image: "https://via.placeholder.com/300", description: "Wi-Fi enabled doorbell with video recording", originalPrice: 19999, discount: "10%" },
+            { id: 9, name: "Motorola Moto E22s Battery - NH50", price: 2750, image: "https://via.placeholder.com/300", description: "Li-ion battery for Motorola Moto E22s", originalPrice: 4500, discount: "39%" }
+        ];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+        const product = products.find(p => p.id === productId);
+
+        if (product) {
+            document.getElementById('detail-image').src = product.image;
+            document.getElementById('detail-name').textContent = product.name;
+            document.getElementById('detail-discount').textContent = `-${product.discount}`;
+            document.getElementById('detail-original-price').textContent = `LKR ${product.originalPrice.toLocaleString()}`;
+            document.getElementById('detail-discounted-price').textContent = `LKR ${product.price.toLocaleString()}`;
+            document.title = `${product.name} - U Mobile Tech`;
+            document.querySelector('meta[property="og:title"]').content = `${product.name} - U Mobile Tech`;
+        }
+
+        function updateQuantity(change) {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value);
+            quantity = Math.max(1, quantity + change);
+            quantityInput.value = quantity;
+        }
+
+        function addToCart() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+            cartCount += quantity;
+            localStorage.setItem('cartCount', cartCount);
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItem = cart.find(item => item.id === productId);
+            if (cartItem) {
+                cartItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'cart.html';
+        }
+
+        function buyNow() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            alert(`Proceeding to buy ${quantity} item(s) of ${product.name}!`);
+            // Add checkout logic here
+        }
+    </script>
+</body>
+</html>
